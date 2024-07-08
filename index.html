@@ -28,26 +28,26 @@
                 <p>
                     سب سے بے رحم درد یہ ہے کہ ہم ساتھ نہیں رہ سکتے<br>
                     زندگی کی زنجیریں ہمیں جدا رہنے پر مجبور کرتی ہیں<br><br>
-            
                     ہمارے دل کی خواہشیں، تمہارے دل کی باتیں ہیں<br>
                     محبت کی یہ راہیں، ہمیں بے خود کرتی ہیں<br><br>
-            
                     قریب ہو کے بھی دور ہیں، یہی ہے محبت کی سزا<br>
                     ہماری یہ تڑپ، ہمیں ہر پل بے چین کرتی ہیں<br><br>
-            
                     نہ تمہیں بھول سکتے ہیں، نہ تمہیں پاس لا سکتے ہیں<br>
                     زندگی کی یہ مجبوری، ہمیں رنجور کرتی ہیں<br><br>
-            
                     ہماری چاہتوں کا حال، کوئی نہ سمجھ سکا<br>
                     یہ دنیا کی رسمیں، ہمیں مجبور کرتی ہیں<br><br>
-            
                     شاہ زیب کی قسمت میں وصال نہیں ہے لکھا<br>
                     یہ دوریوں کی دیواریں، ہمیں مجبور کرتی ہیں<br><br>
-            
                     یہ عشق کی کہانی، ادھوری سی رہ گئی<br>
                     ہمارے خوابوں کی حقیقت، ہمیں مایوس کرتی ہیں
                 </p>
                 <button class="copy-button" onclick="copyGhazal(this)">Copy</button>
+                <button class="like-button" onclick="toggleLike(this)">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+                    </svg>
+                    <span>0</span>
+                </button>
             </div>
             <div class="poetry-item" style="text-align: right;">
                 <h3>دل کو سمجھانا</h3>
@@ -55,23 +55,24 @@
                 <p>
                     دوسرے دل سے محبت کی تھی، اب جدائی کا وقت آیا ہے<br>
                     ایک نئی زندگی شروع کرنی ہے، دل کو سمجھانا آیا ہے<br><br>
-
                     تمہاری یادیں دل میں بستی ہیں، پر اب انہیں بھلانا ہوگا<br>
                     نئی راہیں اپنانے ہیں، اور دل کو پھر سے بسانا ہوگا<br><br>
-
                     بہت مشکل ہے چھوڑنا تمہیں، یہ درد بھی سہنا ہوگا<br>
                     نئی محبت کے خواب دیکھنے ہیں، دل کو اب بہلانا ہوگا<br><br>
-
                     وہ دن تھے حسین جب تم ساتھ تھے، اب وہ پل واپس نہ آئیں گے<br>
                     نئی زندگی کے وعدے کرنے ہیں، دل کو یہ سمجھانا ہوگا<br><br>
-
                     تمہارے بغیر جینا سیکھنا ہے، یہ امتحان بھی دینا ہے<br>
                     نئی خوشیوں کو اپنا کر، دل کو سکون دلانا ہے<br><br>
-
                     شاہ زیب کی قسمت میں یہی لکھا تھا شاید<br>
                     پرانی محبت کو بھلا کر، نئی دنیا بسانا ہے
                 </p>
                 <button class="copy-button" onclick="copyGhazal(this)">Copy</button>
+                <button class="like-button" onclick="toggleLike(this)">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+                    </svg>
+                    <span>0</span>
+                </button>
             </div>
             <!-- Add more poetry items here -->
         </section>
@@ -79,7 +80,6 @@
     <footer>
         <p>&copy; 2024 Whispers of the Heart. All rights reserved.</p>
     </footer>
-
     <script>
         function copyGhazal(button) {
             const ghazalText = button.previousElementSibling.textContent;
@@ -91,6 +91,23 @@
             document.body.removeChild(tempTextarea);
             alert('Ghazal copied to clipboard!');
         }
+    
+        function toggleLike(button) {
+            const likeCount = button.querySelector('span');
+            let count = parseInt(likeCount.textContent);
+            if (button.classList.contains('liked')) {
+                button.classList.remove('liked');
+                count--;
+            } else {
+                button.classList.add('liked');
+                count++;
+            }
+            likeCount.textContent = count;
+        }
+    
+        document.querySelector('.theme-toggle').addEventListener('click', function() {
+            document.body.classList.toggle('dark-theme');
+        });
     </script>
-</body>
+    </body>
 </html>
