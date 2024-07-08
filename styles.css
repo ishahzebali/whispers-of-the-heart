@@ -1,0 +1,278 @@
+/* styles.css */
+
+/* General Styles */
+@keyframes bounceIn {
+    0% {
+        opacity: 0;
+        transform: scale(0.3);
+    }
+    50% {
+        opacity: 1;
+        transform: scale(1.05);
+    }
+    70% {
+        transform: scale(0.9);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes typewriter {
+    from {
+        width: 0;
+    }
+    to {
+        width: 100%;
+    }
+}
+
+@keyframes blink {
+    from {
+        border-right-color: rgba(255, 255, 255, 0.75);
+    }
+    to {
+        border-right-color: transparent;
+    }
+}
+
+@keyframes heartBeat {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.1);
+    }
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: linear-gradient(to right, #3f51b5, #1a237e); /* Indigo gradient */
+    color: #fff; /* Text color to contrast with background */
+    line-height: 1.6;
+}
+
+header {
+    background: rgba(0, 0, 0, 0.7); /* Slightly transparent background */
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+    font-size: 1.5em; /* Smaller heading */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    position: relative;
+    animation: fadeIn 2s ease-in-out;
+}
+
+header .logo {
+    width: 100px;
+    height: auto;
+    position: absolute;
+    top: 10px;
+    left: 20px;
+    animation: bounceIn 2s ease-in-out, heartBeat 1s infinite;
+}
+
+header h1 {
+    font-size: 1.5em; /* Made the heading smaller */
+    white-space: nowrap;
+    overflow: hidden;
+    border-right: 3px solid rgba(255, 255, 255, 0.75);
+    animation: typewriter 4s steps(40) 1s 1 normal both,
+               blink 500ms steps(40) infinite normal;
+    text-align: left; /* Align the text to the left */
+}
+
+nav {
+    display: flex;
+    justify-content: center;
+    background: rgba(0, 0, 0, 0.7); /* Slightly transparent background */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    animation: fadeIn 2s ease-in-out;
+}
+
+nav a {
+    color: #fff;
+    padding: 14px 20px;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: background-color 0.3s;
+}
+
+nav a:hover {
+    background-color: #6200ea;
+    transition: background-color 0.3s, transform 0.3s;
+    transform: scale(1.1);
+}
+
+.container {
+    padding: 20px;
+    max-width: 1200px;
+    margin: auto;
+    padding-bottom: 80px; /* Added padding to prevent content overlap with footer */
+    animation: fadeIn 2s ease-in-out;
+}
+
+.poem {
+    background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white background */
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    color: #333; /* Dark text color for readability */
+    animation: fadeInUp 2s ease-in-out;
+}
+
+.poem h2, .poem h4, .poetry-item h3 {
+    margin-top: 0;
+    font-size: 1.75em;
+    color: #6200ea;
+}
+
+.poetry-item {
+    background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white background */
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    color: #333; /* Dark text color for readability */
+    animation: fadeInUp 2s ease-in-out;
+    text-align: right; /* Right align text */
+}
+
+.copy-button {
+    background-color: #6200ea; /* Purple background */
+    color: #fff; /* White text color */
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: background-color 0.3s;
+    margin-top: 10px; /* Add some space above the button */
+    margin-left: 0; /* Left align */
+}
+
+.copy-button:hover {
+    background-color: #3700b3; /* Darker purple on hover */
+}
+
+footer {
+    background: rgba(0, 0, 0, 0.7); /* Slightly transparent background */
+    color: #fff;
+    text-align: center;
+    padding: 10px 0;
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.1);
+    animation: fadeIn 2s ease-in-out;
+}
+
+form {
+    background-color: rgba(255, 255, 255, 0.8); /* Semi-transparent white background */
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    margin: auto;
+    color: #333; /* Dark text color for readability */
+    margin-bottom: 60px; /* Added margin to ensure space between form and footer */
+    animation: fadeInUp 2s ease-in-out;
+    box-sizing: border-box; /* Ensure padding and border are included in the element's total width and height */
+}
+
+form label {
+    display: block;
+    margin-bottom: 10px;
+    font-weight: bold;
+    color: #6200ea;
+}
+
+form input[type="text"],
+form input[type="email"],
+form textarea {
+    width: calc(100% - 22px); /* Adjust width to fit inside form padding */
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    font-size: 1em;
+    color: #333;
+    box-sizing: border-box; /* Ensure padding and border are included in the element's total width and height */
+}
+
+form input[type="submit"] {
+    background-color: #6200ea;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: background-color 0.3s;
+    width: 100%;
+    box-sizing: border-box; /* Ensure padding and border are included in the element's total width and height */
+}
+
+form input[type="submit"]:hover {
+    background-color: #3700b3;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+    header {
+        font-size: 1.2em; /* Adjusted heading size for mobile */
+    }
+
+    header .logo {
+        width: 80px;
+        top: 5px;
+        left: 10px;
+    }
+
+    nav a {
+        padding: 10px;
+    }
+
+    .poem h2 {
+        font-size: 1.5em;
+    }
+
+    .poem p {
+        font-size: 1em;
+    }
+
+    form input[type="text"],
+    form input[type="email"],
+    form textarea {
+        padding: 8px;
+    }
+
+    .poem h4 {
+        color: #6200ea;
+    }
+}

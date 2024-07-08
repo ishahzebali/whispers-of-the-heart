@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <title>Whispers of the Heart</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <a href="index.html"><img src="logo.png" alt="Whispers of the Heart Logo" class="logo"></a>
+        <h1>Whispers of the Heart</h1>
+    </header>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="poetry.html">Poetry</a>
+        <a href="contact.html">Contact</a>
+    </nav>
+    <div class="container">
+        <section class="poetry-list">
+            <h2>Featured Poems</h2>
+            <div class="poetry-item" style="text-align: right;">
+                <h3>قریب ہو کے بھی دور</h3>
+                <p>شاعر: شاہ زیب علی</p>
+                <p>
+                    سب سے بے رحم درد یہ ہے کہ ہم ساتھ نہیں رہ سکتے<br>
+                    زندگی کی زنجیریں ہمیں جدا رہنے پر مجبور کرتی ہیں<br><br>
+            
+                    ہمارے دل کی خواہشیں، تمہارے دل کی باتیں ہیں<br>
+                    محبت کی یہ راہیں، ہمیں بے خود کرتی ہیں<br><br>
+            
+                    قریب ہو کے بھی دور ہیں، یہی ہے محبت کی سزا<br>
+                    ہماری یہ تڑپ، ہمیں ہر پل بے چین کرتی ہیں<br><br>
+            
+                    نہ تمہیں بھول سکتے ہیں، نہ تمہیں پاس لا سکتے ہیں<br>
+                    زندگی کی یہ مجبوری، ہمیں رنجور کرتی ہیں<br><br>
+            
+                    ہماری چاہتوں کا حال، کوئی نہ سمجھ سکا<br>
+                    یہ دنیا کی رسمیں، ہمیں مجبور کرتی ہیں<br><br>
+            
+                    شاہ زیب کی قسمت میں وصال نہیں ہے لکھا<br>
+                    یہ دوریوں کی دیواریں، ہمیں مجبور کرتی ہیں<br><br>
+            
+                    یہ عشق کی کہانی، ادھوری سی رہ گئی<br>
+                    ہمارے خوابوں کی حقیقت، ہمیں مایوس کرتی ہیں
+                </p>
+                <button class="copy-button" onclick="copyGhazal(this)">Copy</button>
+            </div>
+            <div class="poetry-item" style="text-align: right;">
+                <h3>دل کو سمجھانا</h3>
+                <p>شاعر: شاہ زیب علی</p>
+                <p>
+                    دوسرے دل سے محبت کی تھی، اب جدائی کا وقت آیا ہے<br>
+                    ایک نئی زندگی شروع کرنی ہے، دل کو سمجھانا آیا ہے<br><br>
+
+                    تمہاری یادیں دل میں بستی ہیں، پر اب انہیں بھلانا ہوگا<br>
+                    نئی راہیں اپنانے ہیں، اور دل کو پھر سے بسانا ہوگا<br><br>
+
+                    بہت مشکل ہے چھوڑنا تمہیں، یہ درد بھی سہنا ہوگا<br>
+                    نئی محبت کے خواب دیکھنے ہیں، دل کو اب بہلانا ہوگا<br><br>
+
+                    وہ دن تھے حسین جب تم ساتھ تھے، اب وہ پل واپس نہ آئیں گے<br>
+                    نئی زندگی کے وعدے کرنے ہیں، دل کو یہ سمجھانا ہوگا<br><br>
+
+                    تمہارے بغیر جینا سیکھنا ہے، یہ امتحان بھی دینا ہے<br>
+                    نئی خوشیوں کو اپنا کر، دل کو سکون دلانا ہے<br><br>
+
+                    شاہ زیب کی قسمت میں یہی لکھا تھا شاید<br>
+                    پرانی محبت کو بھلا کر، نئی دنیا بسانا ہے
+                </p>
+                <button class="copy-button" onclick="copyGhazal(this)">Copy</button>
+            </div>
+            <!-- Add more poetry items here -->
+        </section>
+    </div>
+    <footer>
+        <p>&copy; 2024 Whispers of the Heart. All rights reserved.</p>
+    </footer>
+
+    <script>
+        function copyGhazal(button) {
+            const ghazalText = button.previousElementSibling.textContent;
+            const tempTextarea = document.createElement('textarea');
+            tempTextarea.value = ghazalText;
+            document.body.appendChild(tempTextarea);
+            tempTextarea.select();
+            document.execCommand('copy');
+            document.body.removeChild(tempTextarea);
+            alert('Ghazal copied to clipboard!');
+        }
+    </script>
+</body>
+</html>
