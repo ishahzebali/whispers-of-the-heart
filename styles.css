@@ -235,6 +235,7 @@ footer {
     bottom: 0;
     box-shadow: 0 -4px 6px rgba(0, 0, 0, 0.1);
     animation: fadeIn 2s ease-in-out;
+    margin-bottom: 20px; /* Add space between footer and content */
 }
 
 form {
@@ -260,17 +261,17 @@ form label {
 form input[type="text"],
 form input[type="email"],
 form textarea {
-    width: calc(100% - 22px); /* Adjust width to fit inside form padding /
+    width: calc(100% - 22px); /* Adjust width to fit inside form padding */
     padding: 10px;
     margin-bottom: 20px;
     border: 1px solid #ccc;
     border-radius: 8px;
     font-size: 1em;
     color: #333;
-    box-sizing: border-box; / Ensure padding and border are included in the element’s total width and height */
-    }
-    
-    form input[type=“submit”] {
+    box-sizing: border-box; /* Ensure padding and border are included in the element's total width and height */
+}
+
+form input[type="submit"] {
     background-color: #6200ea;
     color: #fff;
     padding: 10px 20px;
@@ -280,83 +281,58 @@ form textarea {
     text-transform: uppercase;
     transition: background-color 0.3s;
     width: 100%;
-    box-sizing: border-box; /* Ensure padding and border are included in the element’s total width and height */
-    }
-    
-    form input[type=“submit”]:hover {
+    box-sizing: border-box; /* Ensure padding and border are included in the element's total width and height */
+}
+
+form input[type="submit"]:hover {
     background-color: #3700b3;
-    }
-    
-    /* Dark Theme Styles */
-    body.dark-theme {
-    background: linear-gradient(to right, #1a237e, #0d47a1);
-    color: #fff;
-    }
-    
-    body.dark-theme header,
-    body.dark-theme nav,
-    body.dark-theme footer,
-    body.dark-theme form {
-    background: rgba(0, 0, 0, 0.9); /* Darker background for dark theme */
-    }
-    
-    body.dark-theme .poem,
-    body.dark-theme .poetry-item {
-    background-color: rgba(255, 255, 255, 0.1); /* Lighter background for dark theme /
-    color: #fff; / White text color for readability */
-    }
-    
-    body.dark-theme .copy-button,
-    body.dark-theme .like-button {
+}
+
+#login-button {
     background-color: #6200ea;
     color: #fff;
-    }
-    
-    body.dark-theme .copy-button:hover,
-    body.dark-theme .like-button:hover {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: background-color 0.3s;
+    margin-left: 10px; /* Adjust as needed */
+}
+
+#login-button:hover {
     background-color: #3700b3;
-    }
-    
-    body.dark-theme .like-button svg {
-    fill: #fff;
-    }
-    
-    body.dark-theme .like-button.liked svg {
-    fill: #e91e63;
-    }
-    
-    body.dark-theme form label {
-    color: #fff;
-    }
-    
-    @media (max-width: 768px) {
+}
+
+@media (max-width: 768px) {
     header {
-    font-size: 1.2em; /* Adjusted heading size for mobile */
+        font-size: 1.2em; /* Adjusted heading size for mobile */
     }
+
     header .logo {
         width: 80px;
         top: 5px;
         left: 10px;
     }
-    
+
     nav a {
         padding: 10px;
     }
-    
+
     .poem h2 {
         font-size: 1.5em;
     }
-    
+
     .poem p {
         font-size: 1em;
     }
-    
+
     form input[type="text"],
     form input[type="email"],
     form textarea {
         padding: 8px;
     }
-    
+
     .poem h4 {
         color: #6200ea;
     }
