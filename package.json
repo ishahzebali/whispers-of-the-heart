@@ -1,0 +1,15 @@
+{
+  "name": "whispers-of-the-heart",
+  "version": "1.0.0",
+  "description": "Welcome to Whispers of the Heart, a beautifully crafted website dedicated to the enchanting world of Urdu poetry. This site features the heartfelt works of Shahzeb Ali, capturing the essence of love, longing, and life’s profound emotions through meticulously composed Ghazals.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.19.2",
+    "firebase": "^10.12.3"
+  }
+}

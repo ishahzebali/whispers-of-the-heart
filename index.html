@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,7 +8,26 @@
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
     <title>Whispers of the Heart</title>
     <link rel="stylesheet" href="styles.css">
+    <!-- Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.1.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.1.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.1.0/firebase-firestore-compat.js"></script>
+    <script>
+        // Your Firebase configuration
+        const firebaseConfig = {
+            apiKey: "AIzaSyC9dRcokIZsWMZ25EgCxW_XS-MWZT8ctXw",
+            authDomain: "whispers-of-the-heart.firebaseapp.com",
+            projectId: "whispers-of-the-heart",
+            storageBucket: "whispers-of-the-heart.appspot.com",
+            messagingSenderId: "1083261439749",
+            appId: "1:1083261439749:web:4882d2d4ace578f6a4716c",
+            measurementId: "G-K5D6SG7MJH"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+    </script>
 </head>
+
 <body>
     <header>
         <a href="index.html"><img src="logo.png" alt="Whispers of the Heart Logo" class="logo"></a>
@@ -18,11 +38,12 @@
         <a href="about.html">About</a>
         <a href="poetry.html">Poetry</a>
         <a href="contact.html">Contact</a>
+        <button id="login-button">Login with Google</button>
     </nav>
     <div class="container">
         <section class="poetry-list">
             <h2>Featured Poems</h2>
-            <div class="poetry-item" style="text-align: right;">
+            <div class="poetry-item" style="text-align: right;" data-poem-id="1">
                 <h3>قریب ہو کے بھی دور</h3>
                 <p>شاعر: شاہ زیب علی</p>
                 <p>
@@ -42,14 +63,15 @@
                     ہمارے خوابوں کی حقیقت، ہمیں مایوس کرتی ہیں
                 </p>
                 <button class="copy-button" onclick="copyGhazal(this)">Copy</button>
-                <button class="like-button" onclick="toggleLike(this)">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+                <button class="like-button" onclick="likePoem(this)">
+                    <svg viewBox="0 0 24 24">
+                        <path
+                            d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 6.5 3.5 5 5.5 5c1.54 0 3.04.99 3.57 2.36h1.87C15.45 5.99 16.96 5 18.5 5 20.5 5 22 6.5 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
                     </svg>
                     <span>0</span>
                 </button>
             </div>
-            <div class="poetry-item" style="text-align: right;">
+            <div class="poetry-item" style="text-align: right;" data-poem-id="2">
                 <h3>دل کو سمجھانا</h3>
                 <p>شاعر: شاہ زیب علی</p>
                 <p>
@@ -67,9 +89,10 @@
                     پرانی محبت کو بھلا کر، نئی دنیا بسانا ہے
                 </p>
                 <button class="copy-button" onclick="copyGhazal(this)">Copy</button>
-                <button class="like-button" onclick="toggleLike(this)">
-                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+                <button class="like-button" onclick="likePoem(this)">
+                    <svg viewBox="0 0 24 24">
+                        <path
+                            d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 6.5 3.5 5 5.5 5c1.54 0 3.04.99 3.57 2.36h1.87C15.45 5.99 16.96 5 18.5 5 20.5 5 22 6.5 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
                     </svg>
                     <span>0</span>
                 </button>
@@ -80,7 +103,81 @@
     <footer>
         <p>&copy; 2024 Whispers of the Heart. All rights reserved.</p>
     </footer>
+
+    <script src="https://www.gstatic.com/firebasejs/9.1.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.1.0/firebase-auth-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.1.0/firebase-firestore-compat.js"></script>
     <script>
+
+        // Google Authentication
+        const auth = firebase.auth();
+        const provider = new firebase.auth.GoogleAuthProvider();
+
+        document.getElementById('login-button').addEventListener('click', () => {
+            auth.signInWithPopup(provider)
+                .then(result => {
+                    console.log(result.user);
+                    // You can save user information to your Firestore database if needed
+                })
+                .catch(error => {
+                    console.error(error);
+                });
+        });
+
+        // Firestore setup
+        const db = firebase.firestore();
+
+        // Like button functionality
+        function likePoem(button) {
+            const poemId = button.parentElement.dataset.poemId;
+            const user = firebase.auth().currentUser;
+            if (user) {
+                const likesRef = db.collection('poems').doc(poemId).collection('likes').doc(user.uid);
+                likesRef.get().then(doc => {
+                    if (doc.exists) {
+                        // User has already liked the poem
+                        likesRef.delete().then(() => {
+                            updateLikesCount(poemId, button, -1);
+                        });
+                    } else {
+                        // User has not liked the poem yet
+                        likesRef.set({ liked: true }).then(() => {
+                            updateLikesCount(poemId, button, 1);
+                        });
+                    }
+                });
+            } else {
+                alert('You need to log in to like a poem.');
+            }
+        }
+
+        function updateLikesCount(poemId, button, change) {
+            const poemRef = db.collection('poems').doc(poemId);
+            poemRef.get().then(doc => {
+                if (doc.exists) {
+                    const likes = doc.data().likes || 0;
+                    const newLikes = likes + change;
+                    poemRef.update({ likes: newLikes }).then(() => {
+                        button.querySelector('span').textContent = newLikes;
+                        button.classList.toggle('liked', change > 0);
+                    });
+                }
+            });
+        }
+
+        // Fetch initial likes count for each poem
+        document.querySelectorAll('.poetry-item').forEach(poetryItem => {
+            const poemId = poetryItem.dataset.poemId;
+            const poemRef = db.collection('poems').doc(poemId);
+            poemRef.get().then(doc => {
+                if (doc.exists) {
+                    const likes = doc.data().likes || 0;
+                    poetryItem.querySelector('.like-button span').textContent = likes;
+                }
+            });
+        });
+
+        // Copy Ghazal functionality
         function copyGhazal(button) {
             const ghazalText = button.previousElementSibling.textContent;
             const tempTextarea = document.createElement('textarea');
@@ -91,23 +188,6 @@
             document.body.removeChild(tempTextarea);
             alert('Ghazal copied to clipboard!');
         }
-    
-        function toggleLike(button) {
-            const likeCount = button.querySelector('span');
-            let count = parseInt(likeCount.textContent);
-            if (button.classList.contains('liked')) {
-                button.classList.remove('liked');
-                count--;
-            } else {
-                button.classList.add('liked');
-                count++;
-            }
-            likeCount.textContent = count;
-        }
-    
-        document.querySelector('.theme-toggle').addEventListener('click', function() {
-            document.body.classList.toggle('dark-theme');
-        });
     </script>
-    </body>
+</body>
 </html>
