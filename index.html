@@ -1,96 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
+    <head>
+        <title>
+            Whispers of the heart
+        </title>
+        <link rel="stylesheet" href="index.css">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Karla:ital,wght@0,200..800;1,200..800&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+    </head>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="icon" href="favicon.ico" type="image/x-icon">
-    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
-    <title>Whispers of the Heart</title>
-    <link rel="stylesheet" href="styles.css">
-    <!-- Firebase SDK -->
-    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-app.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-auth.js"></script>
-    <script src="https://www.gstatic.com/firebasejs/9.0.0/firebase-firestore.js"></script>
-</head>
-
-<body>
     <header>
-        <a href="index.html"><img src="logo.png" alt="Whispers of the Heart Logo" class="logo"></a>
-        <h1>Whispers of the Heart</h1>
+        <nav>
+            <h3>Whispers of The heart</h3>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="#">About</a></li>
+            </ul>
+        </nav>
     </header>
-    <nav>
-        <a href="index.html">Home</a>
-        <a href="about.html">About</a>
-        <a href="poetry.html">Poetry</a>
-        <a href="contact.html">Contact</a>
-        <button id="login-button">Login with Google</button>
-    </nav>
-    <div class="container">
-        <section class="poetry-list">
-            <h2>Featured Poems</h2>
-            <div class="poetry-item" data-poem-id="poem1" style="text-align: right;">
-                <h3>قریب ہو کے بھی دور</h3>
-                <p>شاعر: شاہ زیب علی</p>
-                <p>
-                    سب سے بے رحم درد یہ ہے کہ ہم ساتھ نہیں رہ سکتے<br>
-                    زندگی کی زنجیریں ہمیں جدا رہنے پر مجبور کرتی ہیں<br><br>
-                    ہمارے دل کی خواہشیں، تمہارے دل کی باتیں ہیں<br>
-                    محبت کی یہ راہیں، ہمیں بے خود کرتی ہیں<br><br>
-                    قریب ہو کے بھی دور ہیں، یہی ہے محبت کی سزا<br>
-                    ہماری یہ تڑپ، ہمیں ہر پل بے چین کرتی ہیں<br><br>
-                    نہ تمہیں بھول سکتے ہیں، نہ تمہیں پاس لا سکتے ہیں<br>
-                    زندگی کی یہ مجبوری، ہمیں رنجور کرتی ہیں<br><br>
-                    ہماری چاہتوں کا حال، کوئی نہ سمجھ سکا<br>
-                    یہ دنیا کی رسمیں، ہمیں مجبور کرتی ہیں<br><br>
-                    شاہ زیب کی قسمت میں وصال نہیں ہے لکھا<br>
-                    یہ دوریوں کی دیواریں، ہمیں مجبور کرتی ہیں<br><br>
-                    یہ عشق کی کہانی، ادھوری سی رہ گئی<br>
-                    ہمارے خوابوں کی حقیقت، ہمیں مایوس کرتی ہیں
-                </p>
-                <button class="copy-button" onclick="copyGhazal(this)">Copy</button>
-                <button class="like-button" onclick="likePoem(this)">
-                    <svg viewBox="0 0 24 24">
-                        <path
-                            d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 6.5 3.5 5 5.5 5c1.54 0 3.04.99 3.57 2.36h1.87C15.45 5.99 16.96 5 18.5 5 20.5 5 22 6.5 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
-                    </svg>
-                    <span>0</span>
-                </button>
-            </div>
-            <div class="poetry-item" data-poem-id="poem2" style="text-align: right;">
-                <h3>دل کو سمجھانا</h3>
-                <p>شاعر: شاہ زیب علی</p>
-                <p>
-                    دوسرے دل سے محبت کی تھی، اب جدائی کا وقت آیا ہے<br>
-                    ایک نئی زندگی شروع کرنی ہے، دل کو سمجھانا آیا ہے<br><br>
-                    تمہاری یادیں دل میں بستی ہیں، پر اب انہیں بھلانا ہوگا<br>
-                    نئی راہیں اپنانے ہیں، اور دل کو پھر سے بسانا ہوگا<br><br>
-                    بہت مشکل ہے چھوڑنا تمہیں، یہ درد بھی سہنا ہوگا<br>
-                    نئی محبت کے خواب دیکھنے ہیں، دل کو اب بہلانا ہوگا<br><br>
-                    وہ دن تھے حسین جب تم ساتھ تھے، اب وہ پل واپس نہ آئیں گے<br>
-                    نئی زندگی کے وعدے کرنے ہیں، دل کو یہ سمجھانا ہوگا<br><br>
-                    تمہارے بغیر جینا سیکھنا ہے، یہ امتحان بھی دینا ہے<br>
-                    نئی خوشیوں کو اپنا کر، دل کو سکون دلانا ہے<br><br>
-                    شاہ زیب کی قسمت میں یہی لکھا تھا شاید<br>
-                    پرانی محبت کو بھلا کر، نئی دنیا بسانا ہے
-                </p>
-                <button class="copy-button" onclick="copyGhazal(this)">Copy</button>
-                <button class="like-button" onclick="likePoem(this)">
-                    <svg viewBox="0 0 24 24">
-                        <path
-                            d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 6.5 3.5 5 5.5 5c1.54 0 3.04.99 3.57 2.36h1.87C15.45 5.99 16.96 5 18.5 5 20.5 5 22 6.5 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
-                    </svg>
-                    <span>0</span>
-                </button>
-            </div>
-            <!-- Add more poetry items here -->
-        </section>
-    </div>
-    <footer>
-        <p>&copy; 2024 Whispers of the Heart. All rights reserved.</p>
-    </footer>
-
-    <script src="app.js"></script>
-</body>
 
 </html>
